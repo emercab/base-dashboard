@@ -1,37 +1,38 @@
 // useTheme.js
-import { ref, computed } from 'vue';
+import { info } from 'autoprefixer';
+import { ref, computed, warn } from 'vue';
 
 export function useTheme() {
   const currentTheme = ref('light'); // Tema por defecto
 
   const themes = {
     light: {
-      bg1: 'bg-white',
-      bg2: 'bg-sky-50',
-      bg3: 'bg-blue-100',
-      text: 'text-gray-900',
-      primary: 'bg-blue-500 text-white',
-      secondary: 'bg-gray-500 text-white',
-      success: 'bg-emerald-500 text-white',
-      danger: 'bg-red-500 text-white',
-      menuItem: 'bg-gray-200 text-gray-900',
-      menuItemActive: 'bg-gray-300 text-gray-800',
-      headerColors: 'bg-gray-100 text-gray-800',
-      footerColors: 'bg-gray-100 text-gray-800',
+      bg1: '#fff',
+      bg2: '#e1f6ef',
+      bg3: '#c3ede0',
+      text: '#021710',
+      primary: '#10b981',
+      secondary: '#557b97',
+      success: '#22c55e',
+      danger: '#ef4444',
+      warning: '#f5ce0b',
+      info: '#3bcef6',
+      bgHeader: '#c3ede0',
+      bgFooter: '#064e3b',
     },
     dark: {
-      bg1: 'bg-gray-900',
-      bg2: 'bg-gray-800',
-      bg3: 'bg-blue-900',
-      text: 'text-white',
-      primary: 'bg-blue-700 text-white',
-      secondary: 'bg-gray-700 text-white',
-      success: 'bg-emerald-600 text-white',
-      danger: 'bg-red-600 text-white',
-      menuItem: 'bg-gray-800 text-gray-200',
-      menuItemActive: 'bg-gray-700 text-gray-100',
-      headerColors: `bg-gray-800 text-gray-200`,
-      footerColors: 'bg-gray-800 text-gray-200',
+      bg1: '#121417',
+      bg2: '#1a1f26',
+      bg3: '#22272e',
+      text: '#fff',
+      primary: '10b981',
+      secondary: '#557b97',
+      success: '#22c55e',
+      danger: '#ef4444',
+      warning: '#f5ce0b',
+      info: '#3bcef6',
+      bgHeader: `bg-gray-800 text-gray-200`,
+      bgFooter: '#064e3b',
     }
   };
 

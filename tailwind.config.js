@@ -1,13 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,vue}",
+    "./src/**/*.html",
+    "./src/**/*.vue",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {},
   },
+  ssafelist: [
+    {
+      pattern: /bg-\[#.+\]/, // Incluye cualquier clase de bg-[#color]
+    },
+    {
+      pattern: /text-\[#.+\]/, // Incluye cualquier clase de text-[#color]
+    },
+  ],
   plugins: [],
 }
 

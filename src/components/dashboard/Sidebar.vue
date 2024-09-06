@@ -2,10 +2,14 @@
   <!-- Sidebar -->
   <aside id="sidebar"
     class="fixed top-0 left-0 w-64 h-full p-4 space-y-4 transition-transform transform -translate-x-full lg:translate-x-0"
-    :class="[theme.bg3, theme.text]">
+    :style="{ backgroundColor: theme.bg2, color: theme.text }">
     <div class="text-2xl font-bold mb-6">Logo</div>
-    <nav class="space-y-4">
-      <RouterLink to="/" class="block py-2 px-4 bg-blue-800 rounded">Home</RouterLink>
+    <nav class="space-y-4 rounded-lg" :style="{ backgroundColor: theme.bg3, color: theme.text }">
+      <RouterLink
+        to="/" class="block py-2 px-4 rounded"
+      >
+        Home
+      </RouterLink>
       <RouterLink to="/users" class="block py-2 px-4 hover:bg-blue-700 rounded">Users</RouterLink>
       <RouterLink to="/posts" class="block py-2 px-4 hover:bg-blue-700 rounded">Posts</RouterLink>
       <div class="dropdown">
@@ -26,9 +30,10 @@
 </template>
 
 <script setup>
-  import { useTheme } from '@/composables/useTheme';
+  import { inject } from 'vue';
+  import { RouterLink } from 'vue-router';
 
-  const { theme } = useTheme();
+  const { theme } = inject('theme');
 </script>
 
 <style scoped></style>

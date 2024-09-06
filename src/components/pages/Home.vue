@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-2xl font-bold mb-2">Dashboard Title</h1>
+  <h1 class="text-2xl font-bold mb-2" :style="{ color: theme.primary}">Dashboard Title</h1>
   <p class="mb-8">
     This is a description of the dashboard. It can include instructions, summaries, or any other
     information.
@@ -14,22 +14,10 @@
 
   <!-- Widgets Row 2 -->
   <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 4</h2>
-      <p>Random content for widget 4.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 5</h2>
-      <p>Random content for widget 5.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 6</h2>
-      <p>Random content for widget 6.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 7</h2>
-      <p>Random content for widget 7.</p>
-    </div>
+    <Widget title="Widget 4" content="Random content for widget 4." />
+    <Widget title="Widget 5" content="Random content for widget 5." />
+    <Widget title="Widget 6" content="Random content for widget 6." />
+    <Widget title="Widget 7" content="Random content for widget 7." />
   </section>
 
   <!-- Table -->
@@ -88,7 +76,11 @@
 </template>
 
 <script setup>
+  import { inject } from 'vue';
+  
   import Widget from '../shared/Widget.vue';
+
+  const { theme } = inject('theme');
 </script>
 
 <style scoped></style>
