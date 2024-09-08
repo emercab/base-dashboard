@@ -2,9 +2,9 @@
   <!-- Sidebar -->
   <aside id="sidebar"
     class="fixed top-0 left-0 w-64 h-full p-4 space-y-4 transition-transform transform -translate-x-full lg:translate-x-0"
-    :style="{ backgroundColor: theme.bg2, color: theme.text }">
+    :style="{ backgroundColor: theme.bg1, color: theme.text, borderRight: `3px solid ${theme.bg2}` }">
     <div class="text-2xl font-bold mb-6">Logo</div>
-    <nav class="space-y-4 rounded-lg" :style="{ backgroundColor: theme.bg3, color: theme.text }">
+    <nav class="space-y-4 rounded-lg" :style="{ backgroundColor: theme.bg1, color: theme.text }">
       <RouterLink
         to="/" class="block py-2 px-4 rounded"
       >

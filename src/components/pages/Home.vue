@@ -5,6 +5,16 @@
     information.
   </p>
 
+  <div class="flex items-end gap-3 mb-8">
+    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xs" shape="rounded" />
+    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="sm" shape="rounded" />
+    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="md" shape="rounded" />
+    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="lg" shape="rounded" />
+    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xl" shape="rounded" />
+    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="2xl" shape="rounded" />
+  </div>
+
+
   <!-- Widgets Row 1 -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
     <Widget title="Widget 1" content="Random content for widget 1." />
@@ -79,6 +89,7 @@
   import { inject } from 'vue';
   
   import Widget from '../shared/Widget.vue';
+  import Icon from '../shared/Icon.vue';
 
   const { theme } = inject('theme');
 </script>

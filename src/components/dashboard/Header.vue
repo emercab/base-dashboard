@@ -1,10 +1,10 @@
 <template>
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 h-16 flex justify-between items-center px-4 lg:ml-64"
-    :style="{backgroundColor: theme.bg2, color: theme.text}">
+    :style="{ backgroundColor: theme.bg1, color: theme.text, borderBottom: `3px solid ${theme.bg2}` }">
     <HeaderSearch />
 
-    <div class="flex items-center space-x-4">
+    <div class="flex items-center space-x-1">
       <HeaderThemeIcon />
 
       <HeaderIconNotifications />
@@ -24,7 +24,7 @@
   import HeaderIconNotifications from './HeaderIconNotifications.vue';
   import HeaderUserMenu from './HeaderUserMenu.vue';
 
-  const { theme, toggleTheme } = inject('theme');
+  const { theme } = inject('theme');
 
   const isUserMenuOpen = ref(false);
 
