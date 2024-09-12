@@ -14,17 +14,15 @@
     name: { type: String, required: true, },
     color: { type: String, default: '' }, // Color por defecto
     bgColor: { type: String, default: '' }, // Color de fondo
-    size: { type: String, default: 'md' }, // Valores: 'xs' 'sm', 'md', 'lg', 'xl'
+    size: { type: String, default: 'md' }, // Valores: 'xs' 'sm', 'md', 'lg', 'xl', '2xl'
     shape: { type: String, default: 'square', }, // Valores: 'square', 'circle', 'rounded'
   });
 
   const svgIcon = computed(() => icons[props.name]);
 
-  const iconColor = computed(() => props.color || theme.text);
+  const iconColor = computed(() => props.color || theme.text); // Usar color del tema si no se especifica
 
-  const iconBgColor = computed(() => {
-    return props.bgColor ? props.bgColor : theme.bg1;
-  });
+  const iconBgColor = computed(() => props.bgColor);
 
   const sizeClasses = computed(() => {
     switch (props.size) {
@@ -33,7 +31,7 @@
       case 'lg': return 'w-12 h-12';
       case 'xl': return 'w-16 h-16';
       case '2xl': return 'w-24 h-24';
-      default: return 'w-9 h-9';
+      default: return 'w-9 h-9'; // 'md' por defecto si no se especifica
     }
   });
 

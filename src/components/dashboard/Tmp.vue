@@ -3,25 +3,54 @@
     <nav class="p-4">
       <ul>
         <!-- Ítem 1 -->
-        <li v-for="(item, index) in menuItems" :key="index" @click="setActive(index)"
-          :class="[isActive(index) ? activeItemClass : '', 'cursor-pointer p-2 flex items-center gap-4 rounded-md']">
-          <Icon :name="item.icon" :color="itemColor" :size="'normal'" :bgColor="sidebarBgColor" />
-          <span :class="itemTextClass">{{ item.name }}</span>
+        <li @click="setActive(0)" :style="getItemStyle(0)"
+          class="cursor-pointer p-2 flex items-center gap-4 rounded-md">
+          <Icon name="home" :color="iconColor(0)" :size="'normal'" :bgColor="sidebarBgColor" />
+          <span :style="getTextColor(0)">Dashboard</span>
+        </li>
+
+        <!-- Ítem 2 -->
+        <li @click="setActive(1)" :style="getItemStyle(1)"
+          class="cursor-pointer p-2 flex items-center gap-4 rounded-md">
+          <Icon name="user" :color="iconColor(1)" :size="'normal'" :bgColor="sidebarBgColor" />
+          <span :style="getTextColor(1)">Profile</span>
+        </li>
+
+        <!-- Ítem 3 -->
+        <li @click="setActive(2)" :style="getItemStyle(2)"
+          class="cursor-pointer p-2 flex items-center gap-4 rounded-md">
+          <Icon name="message" :color="iconColor(2)" :size="'normal'" :bgColor="sidebarBgColor" />
+          <span :style="getTextColor(2)">Messages</span>
+        </li>
+
+        <!-- Ítem 4 -->
+        <li @click="setActive(3)" :style="getItemStyle(3)"
+          class="cursor-pointer p-2 flex items-center gap-4 rounded-md">
+          <Icon name="settings" :color="iconColor(3)" :size="'normal'" :bgColor="sidebarBgColor" />
+          <span :style="getTextColor(3)">Settings</span>
         </li>
 
         <!-- Dropdown -->
-        <li @click="toggleDropdown"
-          :class="['cursor-pointer p-2 flex items-center gap-4 rounded-md', dropdownActive ? activeItemClass : '']">
-          <Icon name="folder" :color="itemColor" :size="'normal'" :bgColor="sidebarBgColor" />
-          <span :class="itemTextClass">Dropdown</span>
-          <Icon name="arrow" :color="itemColor" :size="'small'" :class="[dropdownActive ? 'rotate-180' : '']" />
+        <li @click="toggleDropdown" :style="getItemStyle('dropdown')"
+          class="cursor-pointer p-2 flex items-center gap-4 rounded-md">
+          <Icon name="folder" :color="iconColor('dropdown')" :size="'normal'" :bgColor="sidebarBgColor" />
+          <span :style="getTextColor('dropdown')">Dropdown</span>
+          <Icon name="arrow" :color="iconColor('dropdown')" :size="'small'"
+            :class="[dropdownActive ? 'rotate-180' : '']" />
         </li>
+
         <!-- Sub-items del dropdown -->
         <ul v-if="dropdownActive" class="pl-8">
-          <li v-for="(subItem, subIndex) in dropdownItems" :key="subIndex" @click="setActiveDropdown(subIndex)"
-            :class="[isDropdownActive(subIndex) ? activeItemClass : '', 'cursor-pointer p-2 flex items-center gap-4 rounded-md']">
-            <Icon :name="subItem.icon" :color="itemColor" :size="'small'" />
-            <span :class="itemTextClass">{{ subItem.name }}</span>
+          <li @click="setActiveDropdown(0)" :style="getItemStyle('dropdown-0')"
+            class="cursor-pointer p-2 flex items-center gap-4 rounded-md">
+            <Icon name="file" :color="iconColor('dropdown-0')" :size="'small'" />
+            <span :style="getTextColor('dropdown-0')">Subitem 1</span>
+          </li>
+
+          <li @click="setActiveDropdown(1)" :style="getItemStyle('dropdown-1')"
+            class="cursor-pointer p-2 flex items-center gap-4 rounded-md">
+            <Icon name="file" :color="iconColor('dropdown-1')" :size="'small'" />
+            <span :style="getTextColor('dropdown-1')">Subitem 2</span>
           </li>
         </ul>
       </ul>
@@ -31,44 +60,23 @@
 
 <script setup>
   import { ref, computed, inject } from 'vue';
-  import Icon from '@/components/Icon.vue'; // Asegúrate de que la ruta sea correcta
+  import Icon from '@/components/Icon.vue'; // Ruta de tu componente Icon
 
-  // Inyectamos el tema desde el proveedor global
+  // Inyectamos el tema
   const theme = inject('theme');
 
-  // Definir los ítems de menú
-  const menuItems = [
-    { name: 'Dashboard', icon: 'home' },
-    { name: 'Profile', icon: 'user' },
-    { name: 'Messages', icon: 'message' },
-    { name: 'Settings', icon: 'settings' }
-  ];
-
-  // Definir los ítems del dropdown
-  const dropdownItems = [
-    { name: 'Subitem 1', icon: 'file' },
-    { name: 'Subitem 2', icon: 'file' }
-  ];
-
-  // Estado para el ítem de menú activo
+  // Estados para manejar ítems activos y dropdown
   const activeIndex = ref(null);
-
-  // Estado para el dropdown
   const dropdownActive = ref(false);
   const activeDropdownIndex = ref(null);
 
-  // Manejar clics en el menú para activar ítems
+  // Funciones para establecer los ítems activos
   const setActive = (index) => {
     activeIndex.value = index;
   };
 
   const isActive = (index) => {
     return activeIndex.value === index;
-  };
-
-  // Manejar el estado del dropdown
-  const toggleDropdown = () => {
-    dropdownActive.value = !dropdownActive.value;
   };
 
   const setActiveDropdown = (index) => {
@@ -79,13 +87,27 @@
     return activeDropdownIndex.value === index;
   };
 
-  // Clases dinámicas basadas en el tema
-  const sidebarBgColor = computed(() => `bg-[${theme.bg2}]`);
-  const itemColor = computed(() => theme.text);
-  const activeItemClass = computed(() => `bg-[${theme.bg3}] text-[${theme.textInverse}]`);
-  const itemTextClass = computed(() => `text-[${theme.text}]`);
-</script>
+  const toggleDropdown = () => {
+    dropdownActive.value = !dropdownActive.value;
+  };
 
-<style scoped>
-  /* Agregar estilos adicionales si es necesario */
-</style>
+  // Funciones de estilos dinámicos con :style
+  const getItemStyle = (index) => {
+    return {
+      backgroundColor: isActive(index) || isDropdownActive(index) ? theme.bg3 : theme.bg1,
+    };
+  };
+
+  const getTextColor = (index) => {
+    return {
+      color: isActive(index) || isDropdownActive(index) ? theme.textInverse : theme.text,
+    };
+  };
+
+  const iconColor = (index) => {
+    return isActive(index) || isDropdownActive(index) ? theme.textInverse : theme.text;
+  };
+
+  // Clases estáticas de estilo del sidebar
+  const sidebarBgColor = computed(() => `bg-[${theme.bg2}]`);
+</script>

@@ -1,18 +1,8 @@
 <template>
-  <h1 class="text-2xl font-bold mb-2" :style="{ color: theme.primary}">Dashboard Title</h1>
+  <h1 class="text-2xl font-bold mb-2">Categories</h1>
   <p class="mb-8">
-    This is a description of the dashboard. It can include instructions, summaries, or any other
-    information.
+    Categories page content goes here.
   </p>
-
-  <div class="flex items-end gap-3 mb-8">
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xs" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="sm" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="md" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="lg" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xl" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="2xl" shape="rounded" />
-  </div>
 
   <!-- Widgets Row 1 -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -85,12 +75,6 @@
 </template>
 
 <script setup>
-  import { inject } from 'vue';
-  
-  import Widget from '../shared/Widget.vue';
-  import Icon from '../shared/Icon.vue';
-
-  const { theme } = inject('theme');
 </script>
 
 <style scoped></style>

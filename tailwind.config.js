@@ -8,14 +8,6 @@ export default {
   theme: {
     extend: {},
   },
-  ssafelist: [
-    {
-      pattern: /bg-\[#.+\]/, // Incluye cualquier clase de bg-[#color]
-    },
-    {
-      pattern: /text-\[#.+\]/, // Incluye cualquier clase de text-[#color]
-    },
-  ],
   plugins: [],
 }
 

@@ -1,32 +1,47 @@
 <template>
-  <h1 class="text-2xl font-bold mb-2" :style="{ color: theme.primary}">Dashboard Title</h1>
+  <h1 class="text-2xl font-bold mb-2">Settings</h1>
   <p class="mb-8">
-    This is a description of the dashboard. It can include instructions, summaries, or any other
-    information.
+    Some settings content for the user to interact with.
   </p>
-
-  <div class="flex items-end gap-3 mb-8">
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xs" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="sm" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="md" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="lg" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xl" shape="rounded" />
-    <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="2xl" shape="rounded" />
-  </div>
 
   <!-- Widgets Row 1 -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-    <Widget title="Widget 1" content="Random content for widget 1." />
-    <Widget title="Widget 2" content="Random content for widget 2." />
-    <Widget title="Widget 3" content="Random content for widget 3." />
+    <div class="flex justify-between items-center bg-white p-6 rounded shadow">
+      <Icon name="settings" :color="theme.infoLight" :bgColor="theme.info" size="lg" shape="rounded" />
+      
+      <div class="">
+        <h2 class="text-lg font-semibold">Widget 1</h2>
+        <p>Random content for widget 1.</p>
+      </div>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold">Widget 2</h2>
+      <p>Random content for widget 2.</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold">Widget 3</h2>
+      <p>Random content for widget 3.</p>
+    </div>
   </section>
 
   <!-- Widgets Row 2 -->
   <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-    <Widget title="Widget 4" content="Random content for widget 4." />
-    <Widget title="Widget 5" content="Random content for widget 5." />
-    <Widget title="Widget 6" content="Random content for widget 6." />
-    <Widget title="Widget 7" content="Random content for widget 7." />
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold">Widget 4</h2>
+      <p>Random content for widget 4.</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold">Widget 5</h2>
+      <p>Random content for widget 5.</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold">Widget 6</h2>
+      <p>Random content for widget 6.</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold">Widget 7</h2>
+      <p>Random content for widget 7.</p>
+    </div>
   </section>
 
   <!-- Table -->
@@ -86,11 +101,11 @@
 
 <script setup>
   import { inject } from 'vue';
-  
-  import Widget from '../shared/Widget.vue';
+
   import Icon from '../shared/Icon.vue';
 
   const { theme } = inject('theme');
+
 </script>
 
 <style scoped></style>

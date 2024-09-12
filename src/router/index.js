@@ -18,15 +18,22 @@ const router = createRouter({
       path: '/posts',
       name: 'posts',
       component: () => import('@/components/pages/Posts.vue'),
-    }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('@/components/pages/Settings.vue'),
+    },
+    {
+      path: '/categories',
+      name: 'categories',
+      component: () => import('@/components/pages/Categories.vue'),
+    },
+    {
+      path: '/subcategories',
+      name: 'subcategories',
+      component: () => import('@/components/pages/Subcategories.vue'),
+    },
   ]
 })
 

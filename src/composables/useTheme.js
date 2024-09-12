@@ -22,8 +22,8 @@ export function useTheme() {
     },
     light: {
       bg1: '#fff',
-      bg2: '#F5F5F5',
-      bg3: '#c3ede0',
+      bg2: '#f7f7f7',
+      bg3: '#e5e5e5',
       text: '#021710',
       bgFooter: '#064e3b',
     },

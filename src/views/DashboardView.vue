@@ -19,5 +19,4 @@
   import Footer from '@/components/dashboard/Footer.vue';
 
   const { theme } = inject('theme');
-  console.log(theme);
 </script>
