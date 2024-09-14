@@ -1,7 +1,7 @@
 <template>
-  <RouterLink :to="to" :style="textColor" class="">
-    <li @click="onClick" :style="itemStyle" class="flex items-center cursor-pointer p-1">
-      <Icon :name="icon" :color="iconColor" size="md" />
+  <RouterLink :to="link" :style="textColor" class="">
+    <li @click="handleClick" :style="itemStyle" class="flex items-center cursor-pointer p-1" :class="setTextSize">
+      <Icon :name="iconName" :color="iconColor" bgColor="" :size="iconSize" shape="" />
       <span>{{ label }}</span>
     </li>
   </RouterLink>
@@ -9,24 +9,25 @@
 
 <script setup>
   import { computed, inject } from 'vue';
-  
   import Icon from '../shared/Icon.vue';
-  
-  const { theme } = inject('theme');
 
+  // Props
   const props = defineProps({
-    to: String,
+    index: { type: Number, required: true },
+    link: String,
     label: String,
-    icon: String,
-    index: Number,
+    iconName: String,
+    iconSize: { type: String, default: 'md' },
+    textSize: { type: String, default: 'md' },
     activeIndex: Number,
+    onClick: Function,
   });
 
-  const emit = defineEmits(['set-active']);
+  // Inyectamos el tema
+  const { theme } = inject('theme');
 
-  const onClick = () => emit('set-active', props.index);
-
-  const isActive = computed(() => props.index === props.activeIndex);
+  // Computed properties para estilos
+  const isActive = computed(() => props.activeIndex === props.index);
 
   const itemStyle = computed(() => ({
     backgroundColor: isActive.value ? theme.value.primary : theme.value.bg2,
@@ -36,7 +37,19 @@
     color: isActive.value ? theme.value.white : theme.value.text,
   }));
 
-  const iconColor = computed(() => (isActive.value ? theme.value.white : theme.value.text));
-</script>
+  const iconColor = computed(() => isActive.value ? theme.value.white : theme.value.text);
 
-<style scoped></style>
+  const setTextSize = computed(() => {
+    switch (props.textSize) {
+      case 'sm': return 'text-sm';
+      case 'md': return 'text-base';
+      case 'lg': return 'text-lg';
+      case 'xl': return 'text-xl';
+      default: return 'text-base';
+    }
+  })
+
+  const handleClick = () => {
+    props.onClick(props.index);
+  };
+</script>
