@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <a @click="toggleUserMenu" class="flex items-center cursor-pointer">
-      <img src="https://via.placeholder.com/32" alt="Avatar" class="rounded-full h-8 w-8">
+      <img src="https://emersoncabrera.com/img/emerson-cabrera.png" alt="Avatar" class="rounded-full h-8 w-8">
       <span class="ml-2">John Doe</span>
     </a>
     <!-- User Menu -->

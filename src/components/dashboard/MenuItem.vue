@@ -1,6 +1,6 @@
 <template>
   <RouterLink :to="link" :style="textColor" class="">
-    <li @click="handleClick" :style="itemStyle" class="flex items-center cursor-pointer p-1" :class="setTextSize">
+    <li @click="handleClick" :style="itemStyle" class="flex items-center gap-2 cursor-pointer px-1 py-0.5" :class="setTextSize">
       <Icon :name="iconName" :color="iconColor" bgColor="" :size="iconSize" shape="" />
       <span>{{ label }}</span>
     </li>
@@ -30,14 +30,16 @@
   const isActive = computed(() => props.activeIndex === props.index);
 
   const itemStyle = computed(() => ({
-    backgroundColor: isActive.value ? theme.value.primary : theme.value.bg2,
+    backgroundColor: isActive.value ? theme.value.bg2 : '',
+    borderRight: isActive.value ? `4px solid ${theme.value.primary}` : '',
   }));
 
   const textColor = computed(() => ({
-    color: isActive.value ? theme.value.white : theme.value.text,
+    color: isActive.value ? theme.value.primary : theme.value.text,
+    fontWeight: isActive.value ? 'bold' : 'normal',
   }));
 
-  const iconColor = computed(() => isActive.value ? theme.value.white : theme.value.text);
+  const iconColor = computed(() => isActive.value ? theme.value.primary : theme.value.text);
 
   const setTextSize = computed(() => {
     switch (props.textSize) {

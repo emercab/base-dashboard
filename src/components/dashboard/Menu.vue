@@ -1,5 +1,5 @@
 <template>
-  <nav class="rounded-lg" :style="{ backgroundColor: theme.bg2, color: theme.text }">
+  <nav class="rounded-lg" :style="{ backgroundColor: theme.bg1, color: theme.text }">
     <ul class="py-2">
       <slot></slot>
     </ul>

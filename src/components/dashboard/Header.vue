@@ -1,7 +1,7 @@
 <template>
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 h-16 flex justify-between items-center px-4 lg:ml-64"
-    :style="{ backgroundColor: theme.bg1, color: theme.text, borderBottom: `3px solid ${theme.bg2}` }">
+    :style="{ backgroundColor: theme.bg1, color: theme.text, borderBottom: `1px solid ${theme.bg3}` }">
     <HeaderSearch />
 
     <div class="flex items-center space-x-1">

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-2xl font-bold mb-2" :style="{ color: theme.primary}">Dashboard Title</h1>
+  <h1 class="text-2xl font-bold mb-2" :style="{ color: theme.primary }">Dashboard Title</h1>
   <p class="mb-8">
     This is a description of the dashboard. It can include instructions, summaries, or any other
     information.
@@ -12,6 +12,13 @@
     <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="lg" shape="rounded" />
     <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xl" shape="rounded" />
     <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="2xl" shape="rounded" />
+    <Badge text="Aprobado" />
+    <Badge text="Aprobado" color="secondary" />
+    <Badge text="Aprobado" color="success" />
+    <Badge text="Aprobado" color="danger" />
+    <Badge text="Warning" color="warning" />
+    <Badge text="Aprobado" color="info" />
+    <Badge text="Aprobado" color="8b4513" />
   </div>
 
   <!-- Widgets Row 1 -->
@@ -86,11 +93,24 @@
 
 <script setup>
   import { inject } from 'vue';
-  
-  import Widget from '../shared/Widget.vue';
+
+  import Badge from '../shared/Badge.vue';
   import Icon from '../shared/Icon.vue';
+  import Widget from '../shared/Widget.vue';
+import { isColorLight } from '@/utils/manageColors';
 
   const { theme } = inject('theme');
+
+  console.log(theme.value);
+
+  console.log(isColorLight(theme.value.primary));
+  console.log(isColorLight(theme.value.secondary));
+  console.log(isColorLight(theme.value.success));
+  console.log(isColorLight(theme.value.danger));
+  console.log(isColorLight(theme.value.warning));
+  console.log(isColorLight(theme.value.info));
+  console.log(isColorLight('#af42ae'));
+
 </script>
 
 <style scoped></style>

@@ -7,14 +7,14 @@
     <Icon name="arrowRight" color="" size="sm" :class="[isActive ? 'rotate-90' : '']" />
   </li>
 
-  <ul v-if="isActive" class="transition-all duration-300">
+  <ul v-if="isActive" class="pl-4" :style="{ backgroundColor: theme.bg2 }">
     <slot></slot>
   </ul>
 </template>
 
 <script setup>
-  import { computed, inject, ref, watch } from 'vue';
-  import Icon from '../shared/Icon.vue';
+  import { computed, inject, ref, watch } from "vue";
+  import Icon from "../shared/Icon.vue";
 
   // Props
   const props = defineProps({
@@ -26,7 +26,7 @@
     onToggle: Function, // Manejador para cambiar el estado
   });
 
-  const { theme } = inject('theme');
+  const { theme } = inject("theme");
 
   // Variables
   const isDropdownActive = ref(false);
@@ -36,11 +36,15 @@
 
   // Computed para el estilo del dropdown
   const dropdownStyle = computed(() => ({
-    backgroundColor: isActive.value ? theme.value.primary : theme.value.bg2,
-    color: isActive.value ? theme.value.white : theme.value.text,
+    backgroundColor: isActive.value ? theme.value.bg2 : '',
+    color: isActive.value ? theme.value.primary : theme.value.text,
+    fontWeight: isActive.value ? 'bold' : 'normal',
+    borderRight: isActive.value ? `4px solid ${theme.value.primary}` : '',
   }));
 
-  const dropdownIconColor = computed(() => (isActive.value ? theme.value.white : theme.value.text));
+  const dropdownIconColor = computed(() =>
+    isActive.value ? theme.value.primary : theme.value.text
+  );
 
   // Función para alternar el estado del dropdown
   const toggleDropdown = () => {
@@ -52,9 +56,12 @@
   };
 
   // Observador para cambiar el estado del dropdown cuando cambia el índice activo
-  watch(() => props.activeIndex, () => {
-    if (props.activeIndex !== props.index) {
-      isDropdownActive.value = false;
+  watch(
+    () => props.activeIndex,
+    () => {
+      if (props.activeIndex !== props.index) {
+        isDropdownActive.value = false;
+      }
     }
-  });
+  );
 </script>

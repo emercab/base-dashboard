@@ -1,22 +1,20 @@
 <template>
-  <Sidebar />
   
+  <Sidebar />
+
   <Header />
 
-  <main class="pt-20 lg:ml-64 p-4" :style="{ backgroundColor: theme.bg2, color: theme.text }">
-    <RouterView />
-  </main>
+  <Main>
+    <router-view />
+  </Main>
 
   <Footer />
 
 </template>
 
 <script setup>
-  import { inject } from 'vue';
-
-  import Sidebar from '@/components/dashboard/Sidebar.vue';
   import Header from '@/components/dashboard/Header.vue';
-  import Footer from '@/components/dashboard/Footer.vue';
-
-  const { theme } = inject('theme');
+  import Footer from '@/components/shared/Footer.vue';
+  import Main from '@/components/shared/Main.vue';
+  import Sidebar from '@/components/dashboard/Sidebar.vue';
 </script>
