@@ -1,6 +1,6 @@
 <template>
   <Aside>
-    <Logo />
+    <Logo @setActive="setActiveFromLogo" />
 
     <Menu>
       <!-- Menu Items -->
@@ -88,6 +88,10 @@
     activeIndex.value = index;
     activeSubIndex.value = null; // Desactiva los subítems
     dropdownActiveIndex.value = null; // Desactiva cualquier dropdown abierto
+  };
+
+  const setActiveFromLogo = () => {
+    setActive(0);
   };
 
   // Función para manejar dropdowns activos

@@ -1,5 +1,5 @@
 <template>
-  <div v-html="svgIcon" :class="[sizeClasses, shapeClasses, 'p-1 w- flex items-center justify-center']"
+  <div v-html="svgIcon" :class="[sizeClasses, shapeClasses, 'flex items-center justify-center p-1']"
     :style="{ backgroundColor: iconBgColor, color: iconColor }">
   </div>
 </template>
@@ -26,8 +26,8 @@
 
   const sizeClasses = computed(() => {
     switch (props.size) {
-      case 'xs': return 'w-5 h-5';
-      case 'sm': return 'w-7 h-7';
+      case 'xs': return 'w-6 h-6';
+      case 'sm': return 'w-8 h-8';
       case 'lg': return 'w-12 h-12';
       case 'xl': return 'w-16 h-16';
       case '2xl': return 'w-24 h-24';

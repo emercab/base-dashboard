@@ -13,12 +13,24 @@
     <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="xl" shape="rounded" />
     <Icon name="instagram" :color="theme.danger" :bgColor="theme.warning" size="2xl" shape="rounded" />
     <Badge text="Aprobado" />
-    <Badge text="Aprobado" color="secondary" />
-    <Badge text="Aprobado" color="success" />
-    <Badge text="Aprobado" color="danger" />
+    <Badge text="Aprobado" color="secondary" iconName="videoCamera" />
+    <Badge text="Aprobado" color="success" iconName="arrowTrendingUp"/>
+    <Badge text="Danger" color="danger" iconName="xMark" />
     <Badge text="Warning" color="warning" />
     <Badge text="Aprobado" color="info" />
-    <Badge text="Aprobado" color="8b4513" />
+    <Badge text="Aprobado" color="#8b4513" />
+  </div>
+
+  <div class="flex items-end gap-3 mb-8">
+    <span v-for="color in lightPalette" :style="{ backgroundColor: color }" class="p-3 rounded">
+      {{ color }}
+    </span>
+  </div>
+
+  <div class="flex items-end gap-3 mb-8">
+    <span v-for="color in darkPalette" :style="{ backgroundColor: color }" class="p-3 rounded">
+      {{ color }}
+    </span>
   </div>
 
   <!-- Widgets Row 1 -->
@@ -97,19 +109,20 @@
   import Badge from '../shared/Badge.vue';
   import Icon from '../shared/Icon.vue';
   import Widget from '../shared/Widget.vue';
-import { isColorLight } from '@/utils/manageColors';
+  import { createPalette } from '@/utils/manageColors';
 
   const { theme } = inject('theme');
 
-  console.log(theme.value);
+  // Ejemplo de uso
+  const randomColor = theme.value.primary; // Color original
 
-  console.log(isColorLight(theme.value.primary));
-  console.log(isColorLight(theme.value.secondary));
-  console.log(isColorLight(theme.value.success));
-  console.log(isColorLight(theme.value.danger));
-  console.log(isColorLight(theme.value.warning));
-  console.log(isColorLight(theme.value.info));
-  console.log(isColorLight('#af42ae'));
+  // Generar paleta del color hacia blanco
+  const lightPalette = createPalette(randomColor);
+  console.log('Light Palette:', lightPalette);
+
+  // Generar paleta del color hacia negro
+  const darkPalette = createPalette(randomColor, 'dark');
+  console.log('Dark Palette:', darkPalette);
 
 </script>
 

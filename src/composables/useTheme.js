@@ -1,37 +1,85 @@
-// useTheme.js
+import { createPalette, isColorLight, modifyColor } from '@/utils/manageColors';
 import { ref, computed } from 'vue';
 
 export function useTheme() {
-  const currentTheme = ref('light'); // Tema por defecto
+  const currentTheme = ref('light'); // Default theme
 
+  // Theme configuration
+  const numColors = 10;
+
+  // Theme colors
+  const primary = '#4a9acf'
+  const primaryLightPalette = createPalette(primary, 'light', numColors);
+  const primaryDarkPalette = createPalette(primary, 'dark', numColors);
+  const primaryText = isColorLight(primary)
+    ? primaryDarkPalette[numColors - 2]
+    : primaryLightPalette[numColors - 2];
+
+  const secondary = '#364958'
+  const secondaryLightPalette = createPalette(secondary, 'light', numColors);
+  const secondaryDarkPalette = createPalette(secondary, 'dark', numColors);
+  const secondaryText = isColorLight(secondary)
+    ? secondaryDarkPalette[numColors - 2]
+    : secondaryLightPalette[numColors - 2];
+
+  const success = '#32b562'
+  const successLightPalette = createPalette(success, 'light', numColors);
+  const successDarkPalette = createPalette(success, 'dark', numColors);
+  const successText = isColorLight(success)
+    ? successDarkPalette[numColors - 2]
+    : successLightPalette[numColors - 2];
+
+  const danger = '#ef4444'
+  const dangerLightPalette = createPalette(danger, 'light', numColors);
+  const dangerDarkPalette = createPalette(danger, 'dark', numColors);
+  const dangerText = isColorLight(danger)
+    ? dangerDarkPalette[numColors - 2]
+    : dangerLightPalette[numColors - 2];
+
+  const warning = '#f4d03f'
+  const warningLightPalette = createPalette(warning, 'light', numColors);
+  const warningDarkPalette = createPalette(warning, 'dark', numColors);
+  const warningText = isColorLight(warning)
+    ? warningLightPalette[numColors - 2]
+    : warningDarkPalette[numColors - 2];
+
+  const info = '#6acaee'
+  const infoLightPalette = createPalette(info, 'light', numColors);
+  const infoDarkPalette = createPalette(info, 'dark', numColors);
+  const infoText = isColorLight(info)
+    ? infoLightPalette[numColors - 2]
+    : infoDarkPalette[numColors - 2];
+
+  // Dark and light themes info
   const themes = {
     common: {
-      primary: '#169873',
-      secondary: '#364958',
-      success: '#22c55e',
-      danger: '#ef4444',
-      warning: '#f5ce0b',
-      info: '#59d2fe',
-      white: '#fff',
-      primaryText: '#bbddce',
-      secondaryText: '#dbdee1',
-      successText: '#e1f6e3',
-      dangerText: '#f9b9b9',
-      warningText: '#fff6dc',
-      infoText: '#e9f8ff',
+      primary,
+      secondary,
+      success,
+      danger,
+      warning,
+      info,
+      primaryText,
+      secondaryText,
+      successText,
+      dangerText,
+      warningText,
+      infoText,
     },
     light: {
-      bg1: '#fff',
-      bg2: '#f7f7f7',
-      bg3: '#e5e5e5',
+      bg1: primaryLightPalette[primaryLightPalette.length - 1],
+      bg2: modifyColor(primaryLightPalette[primaryLightPalette.length - 2], 3),
+      bg3: primaryLightPalette[primaryLightPalette.length - 4],
+      hover: primaryLightPalette[numColors - 3],
       text: '#021710',
       bgFooter: '#064e3b',
     },
     dark: {
-      bg1: '#121417',
-      bg2: '#1a1f26',
-      bg3: '#22272e',
-      text: '#fff',
+      bg1: primaryDarkPalette[primaryDarkPalette.length - 1],
+      bg2: modifyColor(primaryDarkPalette[primaryDarkPalette.length - 1], 7),
+      bg3: primaryDarkPalette[primaryDarkPalette.length - 4],
+      hover: primaryDarkPalette[numColors - 3],
+      text: '#efefef',
       bgFooter: '#064e3b',
     }
   };

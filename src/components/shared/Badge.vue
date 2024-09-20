@@ -1,6 +1,9 @@
 <template>
-  <span class="px-2 py-1 leading-none rounded-md" :style="badgeStyle">
-    {{ text }}
+  <span class="flex justify-between items-center px-2 py-1 leading-none rounded-md" :style="badgeStyle">
+    <span v-if="props.iconName">
+      <Icon :name="props.iconName" size="xs" />
+    </span>
+    <span>{{ text }}</span>
   </span>
 </template>
 
@@ -9,8 +12,9 @@
   import { computed, inject } from 'vue';
 
   import { isColorLight, modifyColor } from '@/utils/manageColors';
+  import Icon from './Icon.vue';
 
-  const { theme } = inject('theme');
+  const { currentTheme, theme } = inject('theme');
 
   const props = defineProps({
     text: String,
@@ -57,8 +61,15 @@
         break;
       default:
         textColor = color;
-        bgColor = isColorLight(color) ? modifyColor(color, -50) : bgColor = modifyColor(color, 50);
+        bgColor = isColorLight(color) ? modifyColor(color, -90) : bgColor = modifyColor(color, 90);
         break;
+    }
+
+    // Switch colors if theme is dark
+    if (currentTheme.value === 'dark') {
+      const temp = bgColor;
+      bgColor = textColor;
+      textColor = temp;
     }
 
     // Set the font size based on the prop
@@ -76,7 +87,6 @@
     return {
       backgroundColor: bgColor,
       color: textColor,
-      border: `1px solid ${textColor}`,
       fontSize: fontSize,
     };
   });

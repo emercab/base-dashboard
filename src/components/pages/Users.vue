@@ -7,38 +7,9 @@
 
   <!-- Widgets Row 1 -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 1</h2>
-      <p>Random content for widget 1.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 2</h2>
-      <p>Random content for widget 2.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 3</h2>
-      <p>Random content for widget 3.</p>
-    </div>
-  </section>
-
-  <!-- Widgets Row 2 -->
-  <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 4</h2>
-      <p>Random content for widget 4.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 5</h2>
-      <p>Random content for widget 5.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 6</h2>
-      <p>Random content for widget 6.</p>
-    </div>
-    <div class="bg-white p-6 rounded shadow">
-      <h2 class="text-lg font-semibold">Widget 7</h2>
-      <p>Random content for widget 7.</p>
-    </div>
+    <Widget title="Widget 1" content="Random content for widget 1." />
+    <Widget title="Widget 2" content="Random content for widget 2." />
+    <Widget title="Widget 3" content="Random content for widget 3." />
   </section>
 
   <!-- Table -->
@@ -97,6 +68,7 @@
 </template>
 
 <script setup>
+  import Widget from '../shared/Widget.vue';
 </script>
 
 <style scoped></style>
